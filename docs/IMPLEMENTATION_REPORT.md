@@ -29,3 +29,10 @@ Foundation: executable local governance and initialization workflow; remote safe
 
 ## Next engineering steps
 Resolve GitHub API access and open the foundation PR, verify CI and branch enforcement, review product proposals, then implement only the approved MVP with a selected stack. Configure isolated private previews before commercial functional review; complete recovery/privacy/security gates before requesting production approval.
+
+## Publication outcome
+Foundation branch `chore/commercial-foundation` was committed and successfully pushed to origin. PR creation was attempted with GitHub CLI and failed: `Post https://api.github.com/graphql: Forbidden`. No PR or merge was completed. Open a PR manually from the pushed branch to main using GitHub's Compare & pull request action, or restore authorized API access for automation.
+
+Prepared product directories exist at `/workspace/prepared-products/logistics-crosscheck` and `/workspace/prepared-products/language-platform`; both passed documentation/link validation. They are not remote repositories. Foundation local validation passed four tests and left a clean working tree before this report update.
+
+Environment `install_script` and `start_skill` were saved successfully as a draft. They require Python 3.12+, run the real foundation checks and document restart behavior (no application services). Saving did not publish the environment: review and save in environment settings, then publish. Fresh-task restoration has not been tested.
