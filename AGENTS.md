@@ -14,7 +14,7 @@ Applies to Codex Remote, Codex Cloud, and other coding agents operating in this 
 - Never bypass authentication, authorization, tenant isolation, or audit logging for convenience.
 - Never run destructive migrations, change production infrastructure, alter payment settings, or rotate credentials without explicit approval and a rollback plan.
 - Do not merge PRs or deploy to production without the configured human approval and passing required checks.
-- Cloud and Remote must use separate branches/worktrees for concurrent tasks. Do not assume Cloud sees local uncommitted changes, tools, or secrets.
+- Cloud and Remote must use separate branches in existing isolated checkouts for concurrent tasks. Do not assume Cloud sees local uncommitted changes, tools, or secrets.
 - Treat external input, uploaded files, third-party APIs, and AI-generated output as untrusted. Validate at system boundaries.
 
 ## 3. Definition of ready
@@ -44,3 +44,10 @@ Before implementation, identify: user story, acceptance criteria, affected data,
 
 ## 7. Completion format
 Summarize: change, affected files, checks with PASS/FAIL/NOT RUN, security/data considerations, deployment impact, known limitations, PR link if any, and required human decisions.
+
+## Shared execution rules
+- Use the existing isolated cloud checkout; do not create worktrees unless explicitly requested.
+- Never force-push protected branches, bypass checks, or automatically merge PRs.
+- Avoid unrelated refactors and dependencies; document significant architectural decisions. Never silently change business logic.
+- Run `python3 scripts/validate.py` and `python3 -m unittest discover -s tests -v` for foundation changes. Products must add actual stack commands before implementation.
+- Follow `docs/DOMAIN_RULES.md` in generated product repositories.
